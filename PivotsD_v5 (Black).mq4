@@ -222,58 +222,95 @@ int start() {
 
    // S1 Label
    string Ls_36;
-   string Ls_44;
-   string Ls_52;
+
+   // string Ls_44;
+   // string Ls_52;
+
+   // R1 Label
    string Ls_60;
-   string Ls_68;
-   string Ls_76;
+   // string Ls_68;
+   // string Ls_76;
+
+   // S2 Label
    string Ls_84;
-   string Ls_92;
-   string Ls_100;
+   // string Ls_92;
+   // string Ls_100;
+
+   // R2 Label
    string Ls_108;
-   string Ls_116;
-   string Ls_124;
+   // string Ls_116;
+   // string Ls_124;
+
+   // S3 Label
    string Ls_132;
-   string Ls_140;
-   string Ls_148;
+   // string Ls_140;
+   // string Ls_148;
+
+   // R3 Label
    string Ls_156;
-   string Ls_164;
-   string Ls_172;
+   // string Ls_164;
+   // string Ls_172;
+
+   // S4 Label
    string Ls_180;
-   string Ls_188;
-   string Ls_196;
+   // string Ls_188;
+   // string Ls_196;
+
+   // R4 Label
    string Ls_204;
-   string Ls_212;
-   string Ls_220;
+   // string Ls_212;
+   // string Ls_220;
+
+   // S5 Label
    string Ls_228;
-   string Ls_236;
-   string Ls_244;
+   // string Ls_236;
+   // string Ls_244;
+
+   // R5 Label
    string Ls_252;
-   string Ls_260;
+   // string Ls_260;
+
+   // MidPivots Label
    string Ls_268;
+
+   // getWeekDay
    string Ls_276;
+
+   // WindowPriceMax
    double Ld_288;
+   // WindowPriceMin
    double Ld_296;
+   // WindowPrice 差價
    double Ld_304;
+   // Separator
    double Ld_312;
    double Ld_320;
    double Ld_328;
+
+   // 只有 Show_DayCandle 時 Li_436 = 0
    int Li_436;
    int Li_440;
+
+   // Data Comment Label
    string Ls_448;
+
    int Li_456;
    int Li_460;
    int Li_464;
    int Li_468;
    int Li_472;
    int Li_476;
+
    string Ls_480;
    string Ls_488;
    string Ls_496;
    string Ls_504;
+
+   // MarketInfo
    int Li_512;
    // Pivot Info Msg
    string Ls_516;
+   
    deinit();
    if (Indicator_On == FALSE) return (0);
   
@@ -452,6 +489,7 @@ int start() {
       ObjectSet(Ls_448, OBJPROP_YDISTANCE, 13);
       ObjectSet(Ls_448, OBJPROP_COLOR, Data_Comment_Background_Color);
       ObjectSet(Ls_448, OBJPROP_BACK, FALSE);
+
       Li_456 = 0;
       Li_460 = Days_Used_For_Range_Data;
       for (Li_440 = 0; Li_440 < Li_460; Li_440++) Li_456 = Li_456 + (iHigh(NULL, PERIOD_D1, Li_440) - iLow(NULL, PERIOD_D1, Li_440)) / Point;

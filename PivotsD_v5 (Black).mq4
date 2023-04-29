@@ -110,10 +110,13 @@ extern int Days_Used_For_Range_Data = 30;
 // isJPY ? 2 : 4
 int Gi_420;
 int Gi_424;
+// iBarShift
 int Gi_428;
+// TimeDayOfWeek
 int Gi_432;
 int Gi_436;
 int Gi_440;
+// iTime
 int Gi_444;
 
 double Gd_448;
@@ -268,26 +271,9 @@ int start() {
    Gi_428 = iBarShift(NULL, Gi_424, Time[0]) + 1;
    Gi_444 = iTime(NULL, Gi_424, Gi_428);
    Gi_432 = TimeDayOfWeek(Gi_444);
-   switch (Gi_432) {
-   case 5:
-      Ls_276 = "Monday";
-      break;
-   case 0:
-      Gi_428 = iBarShift(NULL, Gi_424, Time[0]) + 2;
-      Ls_276 = "Monday";
-      break;
-   case 1:
-      Ls_276 = "Tuesday";
-      break;
-   case 2:
-      Ls_276 = "Wednesday";
-      break;
-   case 3:
-      Ls_276 = "Thursday";
-      break;
-   case 4:
-      Ls_276 = "Friday";
-   }
+   Ls_276 = getWeekDay(Gi_432)
+
+
    Gd_472 = NormalizeDouble(iClose(NULL, Gi_424, Gi_428), 4);
    Gd_448 = NormalizeDouble(iHigh(NULL, Gi_424, Gi_428), 4);
    Gd_456 = NormalizeDouble(iLow(NULL, Gi_424, Gi_428), 4);
@@ -479,6 +465,32 @@ int initVarLi_0(){
    if (Exit_If_Period_Greater_Than == "H4") Li_0 = 240;
    if (Exit_If_Period_Greater_Than == "D1") Li_0 = 1440;
    return Li_0
+}
+
+// 取得星期
+string getWeekDay(int timeDayOfWeek) {
+   string Ls_276;
+   switch (Gi_432) {
+   case 5:
+      Ls_276 = "Monday";
+      break;
+   case 0:
+      Gi_428 = iBarShift(NULL, Gi_424, Time[0]) + 2;
+      Ls_276 = "Monday";
+      break;
+   case 1:
+      Ls_276 = "Tuesday";
+      break;
+   case 2:
+      Ls_276 = "Wednesday";
+      break;
+   case 3:
+      Ls_276 = "Thursday";
+      break;
+   case 4:
+      Ls_276 = "Friday";
+   }
+   return Ls_276
 }
 
 

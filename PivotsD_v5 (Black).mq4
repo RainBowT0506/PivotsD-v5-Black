@@ -235,13 +235,8 @@ int start() {
    string Ls_516;
    deinit();
    if (Indicator_On == FALSE) return (0);
-   if (Exit_If_Period_Greater_Than == "M1") Li_0 = 1;
-   if (Exit_If_Period_Greater_Than == "M5") Li_0 = 5;
-   if (Exit_If_Period_Greater_Than == "M15") Li_0 = 15;
-   if (Exit_If_Period_Greater_Than == "M30") Li_0 = 30;
-   if (Exit_If_Period_Greater_Than == "H1") Li_0 = 60;
-   if (Exit_If_Period_Greater_Than == "H4") Li_0 = 240;
-   if (Exit_If_Period_Greater_Than == "D1") Li_0 = 1440;
+  
+   Li_0 = initVarLi_0();
    if (Period() > Li_0) {
       deinit();
       return (-1);
@@ -471,6 +466,19 @@ int start() {
       Comment(Ls_516);
    }
    return (0);
+}
+
+// 初始化 Period 退出日期
+int initVarLi_0(){
+   int Li_0;
+   if (Exit_If_Period_Greater_Than == "M1") Li_0 = 1;
+   if (Exit_If_Period_Greater_Than == "M5") Li_0 = 5;
+   if (Exit_If_Period_Greater_Than == "M15") Li_0 = 15;
+   if (Exit_If_Period_Greater_Than == "M30") Li_0 = 30;
+   if (Exit_If_Period_Greater_Than == "H1") Li_0 = 60;
+   if (Exit_If_Period_Greater_Than == "H4") Li_0 = 240;
+   if (Exit_If_Period_Greater_Than == "D1") Li_0 = 1440;
+   return Li_0
 }
 
 

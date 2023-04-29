@@ -298,9 +298,11 @@ int start() {
       Gd_544 = Gd_480 - 1.618 * Gd_464;
       Gd_560 = Gd_480 - 2.618 * Gd_464;
    }
+
    if (CP_LineStyle_01234 > 0) CP_SolidLine_Thickness = FALSE;
    if (R_LineStyle_01234 > 0) R_SolidLineThickness = FALSE;
    if (S_LineStyle_01234 > 0) S_SolidLineThickness = FALSE;
+
    drawLine("R3", Gd_520, Resistance_Pivots_Color, R_LineStyle_01234, R_SolidLineThickness);
    drawLabel(Ls_156, Gd_520, PivotLabels_Color);
    drawLine("R2", Gd_504, Resistance_Pivots_Color, R_LineStyle_01234, R_SolidLineThickness);
@@ -315,6 +317,7 @@ int start() {
    drawLabel(Ls_84, Gd_512, PivotLabels_Color);
    drawLine("S3", Gd_528, Support_Pivots_Color, S_LineStyle_01234, S_SolidLineThickness);
    drawLabel(Ls_132, Gd_528, PivotLabels_Color);
+   
    if (Use_Day_Formula == FALSE) {
       drawLine("R5", Gd_552, Resistance_Pivots_Color, R_LineStyle_01234, R_SolidLineThickness);
       drawLabel(Ls_252, Gd_552, PivotLabels_Color);
@@ -434,21 +437,8 @@ int start() {
          if (Period() > PERIOD_D1) Ls_504 = "OFF";
       }
       Li_512 = MarketInfo(Symbol(), MODE_SPREAD);
-      Ls_516 = "\n --------  PivotsD_v5  --------\n";
-      Ls_516 = Ls_516 + "   Range  Today:   " + DoubleToStr(MathRound((Ld_348 - Ld_356) / Point), 0) 
-      + "\n";
-      Ls_516 = Ls_516 + "         Yesterday:   " + DoubleToStr(MathRound((Ld_404 - Ld_412) / Point), 0) 
-      + "\n";
-      Ls_516 = Ls_516 + "   " + Days_Used_For_Range_Data + " Day Range:   " + Li_456 
-      + "\n";
-      Ls_516 = Ls_516 + "       Next Bar In:   " + Ls_504 
-      + "\n";
-      Ls_516 = Ls_516 + "             Spread:    " + Li_512 
-      + "\n";
-      Ls_516 = Ls_516 + "       Swap  Long:   " + DoubleToStr(MarketInfo(Symbol(), MODE_SWAPLONG), 2) 
-      + "\n";
-      Ls_516 = Ls_516 + "      Swap  Short:   " + DoubleToStr(MarketInfo(Symbol(), MODE_SWAPSHORT), 2) 
-      + "\n";
+
+      Ls_516 = getPivotInfo()
       Comment(Ls_516);
    }
    return (0);
@@ -492,6 +482,28 @@ string getWeekDay(int timeDayOfWeek) {
    }
    return Ls_276
 }
+
+
+string getPivotInfo(){
+   string Ls_516;
+      Ls_516 = "\n --------  PivotsD_v5  --------\n";
+      Ls_516 = Ls_516 + "   Range  Today:   " + DoubleToStr(MathRound((Ld_348 - Ld_356) / Point), 0) 
+      + "\n";
+      Ls_516 = Ls_516 + "         Yesterday:   " + DoubleToStr(MathRound((Ld_404 - Ld_412) / Point), 0) 
+      + "\n";
+      Ls_516 = Ls_516 + "   " + Days_Used_For_Range_Data + " Day Range:   " + Li_456 
+      + "\n";
+      Ls_516 = Ls_516 + "       Next Bar In:   " + Ls_504 
+      + "\n";
+      Ls_516 = Ls_516 + "             Spread:    " + Li_512 
+      + "\n";
+      Ls_516 = Ls_516 + "       Swap  Long:   " + DoubleToStr(MarketInfo(Symbol(), MODE_SWAPLONG), 2) 
+      + "\n";
+      Ls_516 = Ls_516 + "      Swap  Short:   " + DoubleToStr(MarketInfo(Symbol(), MODE_SWAPSHORT), 2) 
+      + "\n";
+   return Ls_516
+}
+
 
 
 void drawLabel(string As_0, double Ad_8, color Ai_16) {

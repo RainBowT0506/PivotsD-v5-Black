@@ -122,21 +122,49 @@ int Gi_440;
 // iTime
 int Gi_444;
 
+// iHigh
 double Gd_448;
+// iLow
 double Gd_456;
+// 差價
 double Gd_464;
+// iClose
 double Gd_472;
+// PIVOT = (iHigh + iLow + iClose)/3
 double Gd_480;
+// R1
 double Gd_488;
+// S1
 double Gd_496;
+// R2
 double Gd_504;
+// S2
 double Gd_512;
+// R3
 double Gd_520;
+// S3
 double Gd_528;
+// R4
 double Gd_536;
+// S4
 double Gd_544;
+// R5
 double Gd_552;
+// S5
 double Gd_560;
+
+
+// MR3 = R2 + R3
+// MR2 = R1 + R2
+// MR1 = PIVOT + R1
+// MS1 = PIVOT + S1
+// MS2 = S1 + S2
+// MS3 = S2 + S3
+
+// MR5 = R4 + R5
+// MR4 = R3 + R4
+// MS4 = S3 + S4
+// MS5 = S4 + S5
 
 double Gda_568[];
 double Gda_572[];

@@ -210,11 +210,17 @@ int deinit() {
 }
 
 int start() {
+   // 初始化 Period 退出日期
    int Li_0;
+   // PIVOT Label
    string Ls_4;
-   string Ls_12;
-   string Ls_20;
-   string Ls_28;
+
+   // 都沒有使用
+   // string Ls_12;
+   // string Ls_20;
+   // string Ls_28;
+
+   // S1 Label
    string Ls_36;
    string Ls_44;
    string Ls_52;

@@ -109,12 +109,15 @@ extern int Days_Used_For_Range_Data = 30;
 
 // isJPY ? 2 : 4
 int Gi_420;
+// 1440，如果除以 240 (我猜是一年能交易的日子) = 6 (年)
 int Gi_424;
 // iBarShift
 int Gi_428;
 // TimeDayOfWeek
 int Gi_432;
+// iBarShift
 int Gi_436;
+// iBarShift
 int Gi_440;
 // iTime
 int Gi_444;
@@ -235,6 +238,7 @@ int start() {
    string Ls_496;
    string Ls_504;
    int Li_512;
+   // Pivot Info Msg
    string Ls_516;
    deinit();
    if (Indicator_On == FALSE) return (0);

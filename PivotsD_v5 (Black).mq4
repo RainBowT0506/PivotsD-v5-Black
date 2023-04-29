@@ -381,14 +381,18 @@ int start() {
       }
       Separator(" Today Separator", Ls_276, iTime(NULL, PERIOD_D1, 0), Separator_Color, Separator_LineStyle_01234, Separator_SolidLineThickness, Ld_328);
    }
+
    int Li_336 = MarketInfo(Symbol(), MODE_DIGITS);
    double Ld_340 = 1;
    if (Li_336 == 3 || Li_336 == 5) Ld_340 = 10.0;
+
    Gi_440 = iBarShift(NULL, PERIOD_D1, Time[0]);
    double Ld_348 = iHigh(NULL, PERIOD_D1, Gi_440);
    double Ld_356 = iLow(NULL, PERIOD_D1, Gi_440);
    double Ld_364 = iOpen(NULL, PERIOD_D1, Gi_440);
    double Ld_372 = iClose(NULL, PERIOD_D1, Gi_440);
+
+   // 關盤價 - 開盤價 = 差價
    double Ld_380 = (Ld_372 - iOpen(NULL, PERIOD_D1, Gi_440)) / (Point * Ld_340);
    double Ld_388 = iTime(NULL, PERIOD_D1, Gi_440);
    double Ld_396 = iTime(NULL, 0, 0);
@@ -397,6 +401,8 @@ int start() {
    double Ld_412 = iLow(NULL, PERIOD_D1, Gi_436);
    double Ld_420 = iTime(NULL, PERIOD_D1, Gi_436);
    double Ld_428 = iTime(NULL, PERIOD_D1, Gi_440);
+
+
    if (Show_DayCandle) {
       Li_436 = 0;
       if (Ld_380 > 0.0) {
@@ -408,9 +414,11 @@ int start() {
       }
       Gda_580[Li_436] = Ld_372;
       Gda_576[Li_436] = Ld_364 + 0.000001;
+
       Li_440 = 0;
       for (int Li_444 = Bars - 1; Li_440 < 4; Li_440++) SetIndexDrawBegin(Li_440, Li_444);
    }
+
    if (Show_Today_Box) colorTFbox("[PivotsD] TFBoxToday", Ld_388, Ld_396, Ld_348, Ld_356, Today_Box_Color);
    if (Show_Yesterday_Box) colorTFbox("[PivotsD] TFBoxYesterday", Ld_420, Ld_428, Ld_404, Ld_412, Yesterday_Box_Color);
    if (Show_Data_Comment) {
@@ -464,6 +472,7 @@ int start() {
    }
    return (0);
 }
+
 
 void drawLabel(string As_0, double Ad_8, color Ai_16) {
    bool Li_28;
